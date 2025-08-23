@@ -1,0 +1,21 @@
+{
+  "name": "combis-app",
+  "version": "1.0.0",
+  "description": "Application de gestion d'assistance solidaire pour LES COMBIS",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "cd server && npm run dev",
+    "client:dev": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "setup": "npm run install:all && cd database && createdb combis_db"
+  },
+  "keywords": ["assistance", "solidaire", "cotisation", "sinistre"],
+  "author": "LES COMBIS",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

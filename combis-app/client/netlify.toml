@@ -1,0 +1,33 @@
+# Configuration Netlify pour LES COMBIS
+
+[build]
+  # Répertoire racine du build
+  base = "client/"
+  # Commande de build
+  command = "npm run build"
+  # Répertoire des fichiers statiques générés
+  publish = "build/"
+
+# Configuration des redirections pour React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers de sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Configuration pour les fonctions serverless (si nécessaire)
+[functions]
+  directory = "netlify/functions"
+
+# Variables d'environnement (à configurer dans le dashboard Netlify)
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
